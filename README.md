@@ -2,167 +2,174 @@
 
 # Sothe Windows Optimizer
 
-**El optimizador de Windows para usuarios expertos: potente, sin trucos y 100 % reversible.**
+**A Windows tuning tool for power users: no hidden dangerous settings, 100% reversible.**
 
-[![Última versión](https://img.shields.io/github/v/release/ImSothe/Sothe-Windows-Optimizer?label=versi%C3%B3n&color=8b5cf6)](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest)
-[![Descargas](https://img.shields.io/github/downloads/ImSothe/Sothe-Windows-Optimizer/total?color=22d3ee)](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases)
+[![Latest release](https://img.shields.io/github/v/release/ImSothe/Sothe-Windows-Optimizer?label=release&color=8b5cf6)](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/ImSothe/Sothe-Windows-Optimizer/total?color=22d3ee)](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases)
 ![Windows 10 | 11](https://img.shields.io/badge/Windows-10%20%7C%2011%20x64-0078D4?logo=windows&logoColor=white)
-![.NET 8](https://img.shields.io/badge/.NET-8%20(incluido)-512BD4?logo=dotnet&logoColor=white)
+![.NET 8](https://img.shields.io/badge/.NET-8%20(bundled)-512BD4?logo=dotnet&logoColor=white)
 ![WPF](https://img.shields.io/badge/UI-WPF-5C2D91)
-![Tests](https://img.shields.io/badge/tests-212%20pasan-success)
-![Actualizaciones firmadas](https://img.shields.io/badge/actualizaciones-firmadas%20ECDSA%20P--256-8b5cf6)
-![Licencia](https://img.shields.io/badge/licencia-freeware%20(c%C3%B3digo%20cerrado)-lightgrey)
+![Tests](https://img.shields.io/badge/tests-212%20passing-success)
+![Signed updates](https://img.shields.io/badge/auto--update-signed%20ECDSA%20P--256-8b5cf6)
+![License](https://img.shields.io/badge/license-freeware%20(closed%20source)-lightgrey)
 
-[**⬇ Descargar la última versión**](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest) · [Cómo funciona](#arquitectura) · [Seguridad](#seguridad) · [English](#english)
+[**⬇ Download the latest release**](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest) · [How it works](#architecture) · [Security](#security) · [Try it / contact](#want-to-try-it)
 
 </div>
 
 ---
 
-## Qué es
+## What it is
 
-Sothe Optimizer aplica **más de 70 ajustes** de rendimiento, latencia, privacidad y limpieza de Windows pensados para **gaming competitivo** (CS2, Valorant, Overwatch…) y para **laboratorios de ciberseguridad** con máquinas virtuales.
+Sothe Optimizer applies **70+ performance, latency, privacy and cleanup tweaks** for Windows, built for **competitive gaming** (CS2, Valorant, Overwatch…) and **cybersecurity labs** running VMs.
 
-A diferencia de otras herramientas, **no esconde las opciones peligrosas**: deja tocar incluso Defender, el firewall, las mitigaciones Spectre/Meltdown, el hipervisor o UAC. La condición es que **todo se pueda deshacer**: antes de cambiar nada guarda el valor anterior, y un botón de pánico («Revertir TODO») lo restaura.
+Unlike most "optimizer" apps, it **does not hide the dangerous settings**: it lets you touch Defender, the firewall, Spectre/Meltdown mitigations, Hyper-V or UAC. The one hard rule is that **everything must be undoable**: the previous value is saved before anything changes, and one panic button ("Revert ALL") restores it.
 
-> **Honestidad ante todo.** En un shooter lo que de verdad marca la diferencia es un monitor de alta frecuencia, Reflex, un *frametime* estable, red por cable y práctica. Los ajustes de registro aportan, con suerte, un dígito porcentual. Esta herramienta te ahorra horas de configuración, no hace milagros.
+> **Honesty first.** What actually wins you a shooter is a high-refresh monitor, Reflex, stable frametimes, a wired connection and practice. Registry tweaks give you, at best, a single-digit percentage. This tool saves you hours of manual tuning — it doesn't work miracles.
 
-### Contenido
+### What's inside
 
 | | |
 |---|---|
-| **Ajustes** | 70 en 13 categorías (Rendimiento, Input, Red, GPU, Energía, Privacidad, Interfaz, Almacenamiento, Seguridad, Debloat, Windows Update…) |
-| **Niveles de riesgo** | `safe` 🟢 · `moderate` 🔵 · `high` 🟠 · `extreme` 🔴 (**PROHIBIDO**, oculto tras el Modo Avanzado) |
-| **Apps (winget)** | 31 programas instalables/desinstalables en lote |
-| **Características de Windows** | 6 (Hyper-V, .NET 3.5, WSL…) |
-| **Perfiles** | Competitivo · Ciberseguridad · Limpio · los tuyos, con código para compartir (`SOTHE-1-…`) |
-| **Reparaciones** | SFC, DISM, reset de red, Windows Update, CHKDSK |
+| **Tweaks** | 70, across 13 categories (Performance, Input, Network, GPU, Power, Privacy, UI, Storage, Security, Debloat, Windows Update…) |
+| **Risk levels** | `safe` 🟢 · `moderate` 🔵 · `high` 🟠 · `extreme` 🔴 (**FORBIDDEN**, hidden behind Advanced Mode) |
+| **Apps (winget)** | 31 programs, batch install/uninstall |
+| **Windows features** | 6 (Hyper-V, .NET 3.5, WSL…) |
+| **Profiles** | Competitive · Cybersecurity · Clean · your own, with a shareable code (`SOTHE-1-…`) |
+| **Repairs** | SFC, DISM, network reset, Windows Update repair, CHKDSK |
 
 ---
 
-## Descarga e instalación
+## Download & install
 
-Este repositorio **solo distribuye el ejecutable**. No hay instalador ni dependencias: es **un único `.exe` autocontenido**.
+This repository **only ships the executable**. No installer, no dependencies — a single self-contained `.exe`.
 
-1. Ve a [**Releases**](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest) y descarga **`SotheOptimizer.exe`**.
-2. *(Recomendado)* Comprueba su integridad. En PowerShell:
+1. Go to [**Releases**](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest) and download **`SotheOptimizer.exe`**.
+2. *(Recommended)* Verify its integrity:
 
    ```powershell
    Get-FileHash .\SotheOptimizer.exe -Algorithm SHA256
    ```
 
-   El resultado debe coincidir con el campo `sha256` del archivo `release.json` de la misma release.
-3. Ejecútalo con doble clic. Windows pedirá **permisos de administrador** (UAC): acepta.
-4. Si aparece SmartScreen («Windows protegió su PC»): **Más información → Ejecutar de todas formas**. El ejecutable aún no está firmado con un certificado de pago (cuesta ~150–400 €/año); por eso la integridad se garantiza con las firmas y hashes descritos más abajo.
-5. Lee y acepta el aviso legal, **crea un punto de restauración** desde la propia app y empieza por un perfil.
+   The result must match the `sha256` field in that release's `release.json`.
+3. Double-click to run it. Windows will ask for **administrator rights** (UAC) — accept.
+4. If SmartScreen shows up ("Windows protected your PC"): **More info → Run anyway**. The binary isn't Authenticode-signed yet (a code-signing certificate costs ~150–400 €/year); integrity is instead guaranteed by the signatures and hashes described below.
+5. Read and accept the legal notice, **create a restore point** from inside the app, and start from a profile.
 
-### Requisitos
+### Requirements
 
-- **Windows 10 o 11, 64 bits.**
-- **Permisos de administrador**: la herramienta modifica el registro (HKLM), servicios y características del sistema. Sin elevación Windows no deja ejecutarla; si cancelas el aviso de UAC la app simplemente no se abre y no se toca nada.
-- **No hace falta instalar .NET**: el runtime va incluido en el `.exe` (por eso pesa ~160 MB).
-- Conexión a Internet **opcional**: solo para licencias, actualizaciones y el catálogo de winget.
+- **Windows 10 or 11, 64-bit.**
+- **Administrator rights**: the app edits the registry (HKLM), services and system features. Without elevation Windows won't launch it; if you cancel the UAC prompt, the app simply doesn't open and nothing is touched.
+- **No .NET install needed**: the runtime is bundled in the `.exe` (hence the ~160 MB size).
+- Internet connection is **optional**: only used for licensing, updates and the winget catalog.
 
 ---
 
-## Arquitectura
+## Architecture
 
-Sothe Optimizer es una aplicación **WPF sobre .NET 8** publicada como *single-file self-contained*. La lógica está separada en motor, datos e interfaz:
+Sothe Optimizer is a **WPF app on .NET 8**, published as a single-file, self-contained executable. The logic is split into engine, data and UI:
 
 ```
-┌─────────────────────────── Interfaz (WPF) ───────────────────────────┐
-│ Optimizaciones · Apps (winget) · Reparaciones · Características      │
-└──────────────┬────────────────────────────────────┬──────────────────┘
-               │ aplica / revierte                  │ licencia / actualización
+┌─────────────────────────── UI (WPF) ──────────────────────────────┐
+│ Optimizations · Apps (winget) · Repairs · Windows Features         │
+└──────────────┬────────────────────────────────────┬────────────────┘
+               │ apply / revert                     │ license / update
 ┌──────────────▼───────────────┐      ┌─────────────▼───────────────────────┐
-│ Motor (SotheEngine)          │      │ Licencias (Keygen) · AppUpdater     │
-│ registro · servicios · cmd   │      │ OTA de datos firmada                │
-│ backups · reconciliación     │      └─────────────────────────────────────┘
+│ Engine (SotheEngine)         │      │ Licensing (Keygen) · AppUpdater      │
+│ registry · services · cmds   │      │ signed data OTA                      │
+│ backups · reconciliation     │      └───────────────────────────────────────┘
 └──────────────▲───────────────┘
-               │ lee (JSON incrustado en el .exe, o actualizado y firmado)
+               │ reads (JSON embedded in the exe, or a signed update)
         tweaks · apps · features · profiles
 ```
 
-### Reversibilidad y reconciliación
+### Reversibility and reconciliation
 
-- Cada ajuste es una lista de **operaciones** (registro, servicio, comando, paquete Appx) descritas en JSON: añadir un ajuste no toca el código.
-- Antes de aplicar, se guarda el **estado previo** en `%ProgramData%\SotheOptimizer\backups`.
-- El botón principal **reconcilia**: lo marcado y no aplicado se aplica; **lo desmarcado pero aplicado se revierte**; lo ya aplicado se deja. El sistema queda idéntico a lo que ves marcado.
-- Un revertido que **falla conserva el backup** (el ajuste sigue contando como aplicado y se puede reintentar) y queda anotado en `sothe.log`.
-- Hay **simulación (dry-run)** para ver qué cambiaría sin tocar nada.
+- Every tweak is a list of **operations** (registry, service, command, Appx package) described in JSON — adding one never touches the code.
+- Before applying, the **previous state** is saved to `%ProgramData%\SotheOptimizer\backups`.
+- The main button **reconciles**: checked-but-not-applied gets applied; **unchecked-but-applied gets reverted**; already-applied is left alone. The system ends up exactly matching what's checked.
+- A revert that **fails keeps its backup** (the tweak still counts as applied and can be retried) and is logged to `sothe.log`.
+- There's a **dry-run simulation** to preview what would change without touching anything.
 
-### Timer Resolution (API nativa de Windows)
+### Timer Resolution (native Windows API)
 
-El ajuste «Timer Resolution fija» pide al kernel una resolución de **0,5 ms** mediante `NtSetTimerResolution` / `NtQueryTimerResolution` de `ntdll.dll` (P/Invoke). El temporizador de plataforma es global: mientras *algún* proceso mantenga la petición, todo el sistema va a esa resolución. Por eso:
+The "Fixed Timer Resolution" tweak asks the kernel for **0.5 ms** resolution via `NtSetTimerResolution` / `NtQueryTimerResolution` in `ntdll.dll` (P/Invoke). The platform timer is global: as long as *any* process holds the request, the whole system runs at that resolution. Because of that:
 
-- Se registra una **tarea programada al iniciar sesión** que lanza un proceso residente ligero (`--timer-resident`, 0 % de CPU: está bloqueado esperando un evento).
-- Un **mutex global** evita instancias duplicadas.
-- Al terminar (al revertir el ajuste o cerrar sesión) el residente **suelta su petición de forma explícita** (`NtSetTimerResolution(..., false)`) para que la resolución vuelva a la del sistema y no se gaste batería de más. Al revertir, se avisa por un evento con nombre y solo como último recurso se fuerza el cierre.
-- La tarea se ejecuta con privilegios elevados, así que el `.exe` que lanza se **copia a `Archivos de programa`** (carpeta que solo modifica un administrador) y la tarea apunta ahí, nunca a tu carpeta de Descargas.
+- A **scheduled task at logon** launches a lightweight resident process (`--timer-resident`, 0% CPU — it blocks on an event).
+- A **global mutex** prevents duplicate instances.
+- On exit (reverting the tweak, or logging off) the resident process **explicitly releases its request** (`NtSetTimerResolution(..., false)`) so resolution goes back to the system default and nothing drains extra battery. Revert signals a named event first and only force-kills as a last resort.
+- The task runs elevated, so the `.exe` it launches is **copied into `Program Files`** (a folder only an administrator can write to) — the task never points at your Downloads folder.
 
-### Auto-actualización firmada (`AppUpdater`)
+### Signed auto-update (`AppUpdater`)
 
-1. Al arrancar consulta la última *release* de este repositorio (solo **HTTPS** y solo hosts de GitHub).
-2. Descarga `release.json` + `release.sig` y comprueba la firma **ECDSA P‑256** con la **clave pública incrustada** en la app. La clave privada vive solo en el PC del autor.
-3. Si la versión es más nueva, descarga el `.exe` **por *streaming*** a disco, calculando el **SHA‑256** al vuelo y con un tope de tamaño; si el hash o el tamaño no coinciden con lo firmado, se descarta y no se guarda nada.
-4. Se instala cuando no hay nada en curso (o al siguiente arranque): un script **espera a que el proceso termine, guarda una copia del `.exe` actual, lo reemplaza, lo relanza** y, si algo falla, **restaura la versión anterior**.
-5. Sin conexión, con GitHub caído o con datos corruptos: no pasa nada. Un fallo de actualización se anota en el log y la app sigue funcionando.
+1. On startup it checks this repository's latest release (**HTTPS only**, GitHub hosts only).
+2. It downloads `release.json` + `release.sig` and verifies the **ECDSA P-256** signature against the app's **embedded public key**. The private key lives only on the author's machine.
+3. If the version is newer, it **streams** the `.exe` to disk, hashing it with **SHA-256** on the fly under a size cap; if the hash or size don't match what was signed, it's discarded and nothing is kept.
+4. It installs when nothing else is in progress (or on the next launch): a script **waits for the process to exit, backs up the current `.exe`, swaps it in, relaunches**, and **rolls back** if anything fails.
+5. No connection, GitHub down, or corrupt data: nothing happens. A failed update check is logged and the app keeps working.
 
-Aunque GitHub o tu red fueran comprometidos, **sin la clave privada del autor no se puede colar un binario** que la app llegue a ejecutar.
+Even if GitHub or your network were compromised, **without the author's private key no binary the app would actually run can be slipped in**.
 
-### Licencias
+### Licensing
 
-- Validación con **[Keygen](https://keygen.sh)**: licencias *node-locked* (un PC por clave) y pruebas de 3 meses.
-- La **huella del equipo** es un SHA‑256 (con sal) del UUID de la BIOS y la serie de la placa; nunca se envían en claro.
-- La licencia se guarda **cifrada con DPAPI** y se valida en segundo plano. Hay una **gracia offline de 14 días** y detección de relojes atrasados o con fechas imposibles.
-- Los ajustes gratuitos funcionan siempre y **revertir es siempre gratis**.
+- Validated with **[Keygen](https://keygen.sh)**: node-locked licenses (one PC per key) and 3-month trials.
+- The **machine fingerprint** is a salted SHA-256 of the BIOS UUID and motherboard serial; never sent in the clear.
+- The license is cached **DPAPI-encrypted** and re-validated in the background. There's a **14-day offline grace period** and detection of clocks that are behind or carry impossible dates.
+- Free tweaks always work, and **reverting is always free**.
 
-### Datos actualizables (OTA)
+### Updatable data (OTA)
 
-Los JSON con los ajustes pueden actualizarse sin reinstalar, pero como contienen comandos que se ejecutan como administrador, **solo se aceptan si el manifiesto está firmado** con la clave del autor y cada fichero coincide con su SHA‑256. Un JSON sin firmar, editado a mano o más antiguo se ignora y se usa la copia incrustada en el `.exe`.
+The tweak JSON files can be updated without reinstalling, but since they contain commands run as administrator, **only a signed manifest is accepted** — signed with the author's key, with every file's SHA-256 checked. An unsigned, hand-edited, or older JSON is ignored in favor of the copy embedded in the `.exe`.
 
 ---
 
-## Seguridad
+## Security
 
-Sothe Optimizer pide privilegios de administrador y ejecuta comandos, así que se ha auditado como tal (análisis estático del código y 212 pruebas automatizadas). Medidas principales:
+Sothe Optimizer asks for administrator rights and runs commands, so it has been audited as such (manual static analysis plus 212 automated tests). Highlights:
 
-| Superficie | Medida |
+| Surface | Mitigation |
 |---|---|
-| **Actualizador** | HTTPS + lista de hosts · firma ECDSA P‑256 · SHA‑256 y tamaño firmados · descarga con tope · reemplazo con copia y marcha atrás |
-| **Carpeta de datos** (`%ProgramData%\SotheOptimizer`) | La app solo confía en lo creado por un administrador o el sistema; ACL protegida (los usuarios estándar solo leen); lo plantado por otros se elimina |
-| **Ejecución de procesos** | `cmd.exe`, `powershell.exe` y `winget` se lanzan por **ruta absoluta**, para que un ejecutable colocado junto al `.exe` no se ejecute como administrador |
-| **Comandos** | Identificadores de winget, Características y nombres de servicio/paquete validados con listas estrictas; `ProcessStartInfo.ArgumentList` en lugar de concatenar argumentos |
-| **Datos OTA** | Firma + hash por fichero; solo ficheros de una lista cerrada |
-| **Licencias** | Caché cifrada con DPAPI, huella con sal, rechazo de fechas de validación falsas |
+| **Updater** | HTTPS + host allow-list · ECDSA P-256 signature · signed SHA-256 and size · streamed download with a size cap · backup-and-rollback swap |
+| **Data folder** (`%ProgramData%\SotheOptimizer`) | Only trusts what an administrator or the system created; protected ACL (standard users get read-only); anything planted by someone else is removed |
+| **Process launching** | `cmd.exe`, `powershell.exe` and `winget` are launched by **absolute path**, so an executable dropped next to the `.exe` can't run as administrator |
+| **Commands** | winget / Windows Feature / service / Appx package names validated against strict patterns; `ProcessStartInfo.ArgumentList` instead of concatenated argument strings |
+| **OTA data** | Per-file signature and hash; only a closed list of filenames is ever accepted |
+| **Licensing** | DPAPI-encrypted cache, salted fingerprint, rejects a validation timestamp set in the future |
 
-**Privacidad.** No hay telemetría. Las únicas conexiones son: GitHub (comprobar actualizaciones), Keygen (licencia: clave, huella cifrada con hash y nombre del equipo) y winget/Microsoft (catálogo de apps) cuando lo usas.
+**Privacy.** No telemetry. The only network calls are: GitHub (update checks), Keygen (licensing: your key, a hashed/salted fingerprint and machine name) and winget/Microsoft (the app catalog) when you use it.
 
-**Límites que conviene saber.** Un programa .NET que corre en tu PC nunca puede protegerse al 100 % de quien lo ejecuta. La app no es una caja negra para quien tenga ganas de analizarla; la protección real de la licencia está en el servidor.
+**Known limits.** A .NET program running on your own machine can never be fully protected from whoever runs it. This app is not a black box to someone willing to analyze it; the real protection for licensing lives server-side, in Keygen.
 
-¿Has encontrado una vulnerabilidad? Abre un [aviso de seguridad privado](https://github.com/ImSothe/Sothe-Windows-Optimizer/security/advisories/new) (ver [SECURITY.md](SECURITY.md)).
-
----
-
-## Desinstalar y deshacer
-
-- Dentro de la app: **Revertir TODO** restaura cada ajuste desde su backup.
-- Para quitar la app basta con borrar `SotheOptimizer.exe`. Si activaste *Timer Resolution fija*, **revierte ese ajuste primero** (elimina la tarea programada y su copia en `Archivos de programa`).
-- Los datos viven en `%ProgramData%\SotheOptimizer` (backups, perfiles propios, log).
+Found a vulnerability? Please open a [private security advisory](https://github.com/ImSothe/Sothe-Windows-Optimizer/security/advisories/new) (see [SECURITY.md](SECURITY.md)) instead of a public issue.
 
 ---
 
-## Aviso legal
+## Uninstall & undo
 
-Sothe Optimizer modifica ajustes profundos de Windows. **Úsalo bajo tu propia responsabilidad**: algunos ajustes desactivan protecciones de seguridad o pueden causar inestabilidad. Crea siempre un punto de restauración antes de aplicar cambios. El software se ofrece «TAL CUAL», sin garantías. Consulta [LICENSE](LICENSE).
+- Inside the app: **Revert ALL** restores every tweak from its backup.
+- To remove the app, just delete `SotheOptimizer.exe`. If you enabled *Fixed Timer Resolution*, **revert that tweak first** (it removes the scheduled task and its copy in `Program Files`).
+- Data lives in `%ProgramData%\SotheOptimizer` (backups, your own profiles, the log).
 
 ---
 
-## English
+## Want to try it?
 
-**Sothe Windows Optimizer** is a Windows 10/11 tuning tool for power users (competitive gaming and security labs). It applies 70+ registry, service and system tweaks, **never hides the dangerous ones** (Defender, firewall, Spectre/Meltdown mitigations…), and makes **every change reversible** by storing the previous value first.
+The source code is closed (see below), and the compiled build is obfuscated. If you'd like early/beta access, want to report something before it's public, or are a recruiter who wants a walkthrough: reach out on Instagram **[@SoySothe](https://www.instagram.com/soysothe)** or by email at **angelbazm@gmail.com**.
 
-- **Download:** grab `SotheOptimizer.exe` from [Releases](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest). It is a single self-contained file (the .NET 8 runtime is bundled) and needs **administrator rights** (UAC).
-- **Integrity:** compare `Get-FileHash .\SotheOptimizer.exe` with the `sha256` in `release.json`. The binary is not Authenticode-signed yet, so SmartScreen may warn (*More info → Run anyway*).
-- **Engineering highlights:** WPF/.NET 8 single-file app; `ntdll` P/Invoke for 0.5 ms timer resolution with an explicit release on exit; **ECDSA P-256 signed auto-updater** (HTTPS + host allow-list, streamed SHA-256 verification, size cap, backup-and-rollback swap script); **Keygen node-locked licensing** with DPAPI-protected cache and hashed hardware fingerprint; **signed OTA data**; hardened `%ProgramData%` storage; absolute-path process launching; 212 automated tests.
-- **Source code is closed.** This repository only hosts the binary releases.
+---
+
+## Legal notice
+
+Sothe Optimizer modifies deep Windows settings. **Use it at your own risk**: some tweaks disable security protections or can cause instability. Always create a restore point before applying changes. The software is provided "AS IS", with no warranty. See [LICENSE](LICENSE).
+
+## Source code & engineering notes
+
+The source code is **not distributed** in this repository; only signed binary releases are published here (see [LICENSE](LICENSE)). For anyone evaluating the engineering rather than running the app:
+
+- WPF / .NET 8, single-file self-contained publish.
+- `ntdll` P/Invoke for 0.5 ms timer resolution, with an explicit release on exit instead of relying on process teardown.
+- ECDSA P-256 **signed auto-updater**: HTTPS + host allow-list, streamed SHA-256 verification, a declared-size cap, and a backup-and-rollback swap script.
+- **Keygen** node-locked licensing with a DPAPI-protected cache and a salted hardware fingerprint.
+- Signed OTA data updates, hardened `%ProgramData%` storage (ownership + ACL checks), absolute-path process launching.
+- The public build is **obfuscated** (Obfuscar) before packaging.
+- **212 automated tests** (xUnit) covering the engine, the updater, licensing and the security hardening above.
