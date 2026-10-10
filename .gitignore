@@ -1,0 +1,85 @@
+# ==========================================================
+#  Sothe Windows Optimizer (repo publico de descargas) - .gitignore
+#  Este repositorio solo lleva documentacion. El ejecutable va
+#  como ASSET de una Release (no se commitea) y el codigo fuente
+#  NO debe llegar nunca aqui.
+# ==========================================================
+
+# --- Salidas de compilacion C# / .NET ---
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+publish/
+publish-out/
+*.binlog
+*.dll
+*.pdb
+*.exe
+*.zip
+*.msi
+*.msix
+
+# --- Archivos de usuario / IDE (Visual Studio, Rider, VS Code) ---
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.rsuser
+*.DotSettings.user
+.idea/
+.vscode/
+
+# --- Cachés y paquetes de compilacion ---
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+.nuget/
+project.lock.json
+*.cache
+*.tmp
+*.log
+*.bak
+~$*
+[Tt]est[Rr]esult*/
+*.trx
+*.coverage
+
+# --- GUARDIA DE PRIVACIDAD: el codigo fuente no entra en este repo ---
+*.cs
+*.csproj
+*.sln
+*.slnx
+*.xaml
+*.resx
+*.manifest
+src/
+tests/
+tools/
+legacy/
+
+# --- Secretos: claves de firma, certificados y entorno (NUNCA al repo) ---
+*.pem
+*.pfx
+*.p12
+*.snk
+*.cer
+*.key
+.env
+.env.*
+secrets.json
+
+# --- Sistema operativo ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
