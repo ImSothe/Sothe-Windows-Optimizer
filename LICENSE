@@ -1,0 +1,35 @@
+Sothe Windows Optimizer - Licencia de uso del software (freeware, codigo cerrado)
+Copyright (c) 2026 Sothe. Todos los derechos reservados.
+
+1. CONCESION. Se te concede una licencia personal, no exclusiva e intransferible para
+   descargar, instalar y usar el ejecutable "SotheOptimizer.exe" publicado en este
+   repositorio en los equipos que poseas o administres. Algunas funciones pueden requerir
+   una licencia PRO aparte.
+
+2. REDISTRIBUCION. Puedes compartir el enlace a este repositorio. No puedes redistribuir
+   el ejecutable modificado, ni venderlo, ni presentarlo como propio.
+
+3. CODIGO FUENTE. El codigo fuente NO se distribuye y esta protegido por derechos de autor.
+   No esta permitido descompilar, desensamblar, aplicar ingenieria inversa, modificar ni
+   eludir los mecanismos de licencia o de verificacion de integridad del software, salvo en
+   la medida en que la ley aplicable lo permita expresamente e imposible de excluir por contrato.
+
+4. RIESGOS. Sothe Windows Optimizer modifica ajustes profundos de Windows (registro, servicios,
+   seguridad). Algunos ajustes desactivan protecciones o pueden causar inestabilidad, perdida de
+   datos o que Windows no arranque. Crea un punto de restauracion antes de aplicar cambios.
+   Lo usas bajo tu propia responsabilidad.
+
+5. SIN GARANTIA. EL SOFTWARE SE OFRECE "TAL CUAL", SIN GARANTIA DE NINGUN TIPO, EXPRESA O
+   IMPLICITA, INCLUIDAS LAS DE COMERCIABILIDAD, IDONEIDAD PARA UN FIN CONCRETO Y NO INFRACCION.
+
+6. LIMITACION DE RESPONSABILIDAD. EN NINGUN CASO EL AUTOR SERA RESPONSABLE DE DANOS, PERDIDA DE
+   DATOS, INESTABILIDAD NI CUALQUIER OTRA CONSECUENCIA DERIVADA DEL USO DEL SOFTWARE.
+
+7. TERCEROS. El ejecutable incluye el runtime de .NET y bibliotecas de Microsoft bajo sus propias
+   licencias (MIT y otras). Sus avisos se conservan en el propio ejecutable.
+
+---------------------------------------------------------------------------------------------
+
+English summary: free to use for personal purposes; source code is proprietary and not
+distributed; no modification, resale, redistribution of modified binaries or reverse
+engineering (where permitted by law); provided "AS IS" without warranty; use at your own risk.
