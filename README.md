@@ -154,7 +154,7 @@ Found a vulnerability? Please open a [private security advisory](https://github.
 
 ## Want to try it?
 
-The source code is closed (see below), and the compiled build is obfuscated. If you'd like early/beta access, want to report something before it's public, or are a recruiter who wants a walkthrough: reach out on Instagram **[@SoySothe](https://www.instagram.com/soysothe)** or through my [GitHub profile](https://github.com/ImSothe).
+The source code is closed (see below), and the compiled build is obfuscated. If you'd like early/beta access, want to report something before it's public, or are a recruiter who wants a walkthrough: reach out on Instagram **[@SoySothe](https://www.instagram.com/soysothe)** or by email at **angelbazm@gmail.com**.
 
 ---
 
