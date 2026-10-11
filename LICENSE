@@ -1,3 +1,43 @@
+Sothe Windows Optimizer - Software License (freeware, closed source)
+Copyright (c) 2026 Sothe (GitHub: @ImSothe). All rights reserved.
+
+This is an English translation of the Spanish original that follows it. It is provided
+for convenience.
+
+1. GRANT. You are granted a personal, non-exclusive, non-transferable license to
+   download, install and use the executable "SotheOptimizer.exe" published in this
+   repository on computers that you own or administer. Some features may require a
+   separate PRO license.
+
+2. REDISTRIBUTION. You may share the link to this repository. You may not redistribute
+   a modified executable, sell it, or present it as your own.
+
+3. SOURCE CODE. The source code is NOT distributed and is protected by copyright.
+   Decompiling, disassembling, reverse engineering, modifying, or circumventing the
+   licensing or integrity-verification mechanisms of the software is not permitted,
+   except to the extent that applicable law expressly allows it and that right cannot
+   be excluded by contract.
+
+4. RISKS. Sothe Windows Optimizer modifies deep Windows settings (registry, services,
+   security). Some tweaks disable protections or may cause instability, data loss, or
+   prevent Windows from starting. Create a restore point before applying changes. You
+   use the software at your own risk.
+
+5. NO WARRANTY. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+   OR IMPLIED, INCLUDING THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+   PURPOSE AND NON-INFRINGEMENT.
+
+6. LIMITATION OF LIABILITY. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DAMAGES, LOSS
+   OF DATA, INSTABILITY, OR ANY OTHER CONSEQUENCE ARISING FROM THE USE OF THE SOFTWARE.
+
+7. THIRD PARTIES. The executable includes the .NET runtime and Microsoft libraries under
+   their own licenses (MIT and others). Their notices are preserved in the executable
+   itself.
+
+=============================================================================================
+ORIGINAL SPANISH TEXT / TEXTO ORIGINAL EN ESPAÑOL
+=============================================================================================
+
 Sothe Windows Optimizer - Licencia de uso del software (freeware, codigo cerrado)
 Copyright (c) 2026 Sothe. Todos los derechos reservados.
 
@@ -27,9 +67,3 @@ Copyright (c) 2026 Sothe. Todos los derechos reservados.
 
 7. TERCEROS. El ejecutable incluye el runtime de .NET y bibliotecas de Microsoft bajo sus propias
    licencias (MIT y otras). Sus avisos se conservan en el propio ejecutable.
-
----------------------------------------------------------------------------------------------
-
-English summary: free to use for personal purposes; source code is proprietary and not
-distributed; no modification, resale, redistribution of modified binaries or reverse
-engineering (where permitted by law); provided "AS IS" without warranty; use at your own risk.
