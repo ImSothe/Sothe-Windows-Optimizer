@@ -154,9 +154,20 @@ Found a vulnerability? Please open a [private security advisory](https://github.
 
 ## Want to try it?
 
-The source code is closed (see below), and the compiled build is obfuscated. If you'd like early/beta access, want to report something before it's public, or are a recruiter who wants a walkthrough: reach out on Instagram **[@SoySothe](https://www.instagram.com/soysothe)** or by email at **angelbazm@gmail.com**.
+The source code is closed (see below), and the compiled build is obfuscated. If you'd like early/beta access, want to report something before it's public, or are a recruiter who wants a walkthrough: reach out on Instagram **[@SoySothe](https://www.instagram.com/soysothe)** or through my [GitHub profile](https://github.com/ImSothe).
 
 ---
+
+## License and ownership
+
+**Sothe Windows Optimizer is proprietary freeware (closed source).** It is free to download and use for personal purposes; the source code is not distributed.
+
+- **Owner and copyright holder:** Sothe ([@ImSothe](https://github.com/ImSothe)). Copyright © 2026 Sothe. All rights reserved.
+- **What you may do:** download, install and use `SotheOptimizer.exe` on computers you own or administer, and share the link to this repository. Some features require a separate PRO license.
+- **What you may not do:** modify, resell or redistribute the executable, present it as your own, or reverse engineer it (except where the law expressly allows it).
+- **Full terms:** see [LICENSE](LICENSE), in English with the Spanish original included.
+
+GitHub shows the license as "Other" (or "NOASSERTION") because this is a custom, proprietary license rather than an open-source one such as MIT. That is intentional.
 
 ## Legal notice
 
