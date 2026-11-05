@@ -1,3 +1,6 @@
+> **This project is now open source as [Toji](https://github.com/ImSothe/Toji-Windows-Optimizer)** (MIT, no licensing, source and tests included).
+> This repository keeps hosting the signed binary releases that existing installs poll for updates; development happens in the new repository.
+
 <div align="center">
 
 # Sothe Windows Optimizer
@@ -152,9 +155,9 @@ Found a vulnerability? Please open a [private security advisory](https://github.
 
 ---
 
-## Want to try it?
+## Source code
 
-The source code is closed (see below), and the compiled build is obfuscated. If you'd like early/beta access, want to report something before it's public, or are a recruiter who wants a walkthrough: reach out on Instagram **[@SoySothe](https://www.instagram.com/soysothe)** or by email at **redacted@users.noreply.github.com**.
+The full source, tests and documentation are in **[Toji-Windows-Optimizer](https://github.com/ImSothe/Toji-Windows-Optimizer)**. Questions or reports: open an issue there.
 
 ---
 
