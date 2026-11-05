@@ -1,189 +1,207 @@
-> **This project is now open source as [Toji](https://github.com/ImSothe/Toji-Windows-Optimizer)** (MIT, no licensing, source and tests included).
-> This repository keeps hosting the signed binary releases that existing installs poll for updates; development happens in the new repository.
-
 <div align="center">
 
-# Sothe Windows Optimizer
+# Toji
 
-**A Windows tuning tool for power users: no hidden dangerous settings, 100% reversible.**
+**A Windows tuning tool for power users: 70 tweaks, nothing hidden, every change undoable in the right order.**
 
-[![Latest release](https://img.shields.io/github/v/release/ImSothe/Sothe-Windows-Optimizer?label=release&color=8b5cf6)](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/ImSothe/Sothe-Windows-Optimizer/total?color=22d3ee)](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases)
-![Windows 10 | 11](https://img.shields.io/badge/Windows-10%20%7C%2011%20x64-0078D4?logo=windows&logoColor=white)
-![.NET 8](https://img.shields.io/badge/.NET-8%20(bundled)-512BD4?logo=dotnet&logoColor=white)
+[![CI](https://github.com/ImSothe/Toji-Windows-Optimizer/actions/workflows/ci.yml/badge.svg)](https://github.com/ImSothe/Toji-Windows-Optimizer/actions/workflows/ci.yml)
+![.NET 8](https://img.shields.io/badge/.NET-8-512BD4?logo=dotnet&logoColor=white)
 ![WPF](https://img.shields.io/badge/UI-WPF-5C2D91)
-![Tests](https://img.shields.io/badge/tests-212%20passing-success)
-![Signed updates](https://img.shields.io/badge/auto--update-signed%20ECDSA%20P--256-8b5cf6)
-![License](https://img.shields.io/badge/license-freeware%20(closed%20source)-lightgrey)
-
-[**⬇ Download the latest release**](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest) · [How it works](#architecture) · [Security](#security) · [Try it / contact](#want-to-try-it)
+![Windows 10 | 11](https://img.shields.io/badge/Windows-10%20%7C%2011%20x64-0078D4?logo=windows&logoColor=white)
+![Tests](https://img.shields.io/badge/tests-172%20passing-success)
+![Coverage](https://img.shields.io/badge/line%20coverage-87.5%25%20(non--UI)-success)
+![License](https://img.shields.io/badge/license-MIT-blue)
 
 </div>
 
+<div align="center">
+
+<img src="docs/images/toji-optimizations.png" width="860" alt="Toji: tweaks list with risk levels, profiles, search and the Apply / Revert all bar" />
+
+</div>
+
+<table>
+<tr>
+<td><img src="docs/images/toji-apps.png" alt="Apps tab (winget)" /></td>
+<td><img src="docs/images/toji-repairs.png" alt="Repairs tab" /></td>
+<td><img src="docs/images/toji-features.png" alt="Windows features tab" /></td>
+</tr>
+</table>
+
 ---
+
+> **This repository hosts the signed release builds that Toji's auto-update downloads. The source code, issues and development live in [Toji-Windows-Optimizer](https://github.com/ImSothe/Toji-Windows-Optimizer).**
+>
+> **Download:** grab `SotheOptimizer.exe` from the [latest release](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest) (the file keeps its original name so existing installs update in place). Check it with `Get-FileHash .\SotheOptimizer.exe -Algorithm SHA256` against the `sha256` in that release's `release.json`. The binary is not Authenticode-signed yet, so SmartScreen may warn on first run (More info -> Run anyway); update integrity relies on the ECDSA signature instead.
+
 
 ## What it is
 
-Sothe Optimizer applies **70+ performance, latency, privacy and cleanup tweaks** for Windows, built for **competitive gaming** (CS2, Valorant, Overwatch…) and **cybersecurity labs** running VMs.
+Toji applies **70 performance, latency, privacy and cleanup tweaks** to Windows, built for competitive gaming and
+cybersecurity labs that run VMs. Unlike most "optimizer" apps it does **not** hide the dangerous settings (Defender,
+firewall, Spectre/Meltdown mitigations, Hyper-V, UAC); it puts them behind an explicit Advanced Mode and asks you to
+confirm. The one hard rule is that **what it changes, it can put back**.
 
-Unlike most "optimizer" apps, it **does not hide the dangerous settings**: it lets you touch Defender, the firewall, Spectre/Meltdown mitigations, Hyper-V or UAC. The one hard rule is that **everything must be undoable**: the previous value is saved before anything changes, and one panic button ("Revert ALL") restores it.
-
-> **Honesty first.** What actually wins you a shooter is a high-refresh monitor, Reflex, stable frametimes, a wired connection and practice. Registry tweaks give you, at best, a single-digit percentage. This tool saves you hours of manual tuning — it doesn't work miracles.
-
-### What's inside
+> **Honesty first.** What wins a shooter is a high-refresh monitor, stable frametimes, a wired connection and practice.
+> Registry tweaks give, at best, a single-digit percentage, and some tweaks here have **no measured effect at all**
+> (see [Known limits](#known-limits)). The tool saves hours of manual tuning; it does not work miracles.
 
 | | |
 |---|---|
-| **Tweaks** | 70, across 13 categories (Performance, Input, Network, GPU, Power, Privacy, UI, Storage, Security, Debloat, Windows Update…) |
-| **Risk levels** | `safe` 🟢 · `moderate` 🔵 · `high` 🟠 · `extreme` 🔴 (**FORBIDDEN**, hidden behind Advanced Mode) |
-| **Apps (winget)** | 31 programs, batch install/uninstall |
-| **Windows features** | 6 (Hyper-V, .NET 3.5, WSL…) |
-| **Profiles** | Competitive · Cybersecurity · Clean · your own, with a shareable code (`SOTHE-1-…`) |
+| **Tweaks** | 70 in 13 categories, each described as data (`tweaks.json`): registry, service, command or Appx operations |
+| **Risk levels** | `safe` · `moderate` · `high` · `extreme` ("PROHIBIDO", hidden behind Advanced Mode) |
+| **Apps** | 31 programs via winget, batch install and uninstall |
+| **Windows features** | 6 (Hyper-V, .NET 3.5, WSL...) |
+| **Profiles** | Competitive · Cybersecurity · Clean · your own, plus a shareable code (`SOTHE-1-...`) |
 | **Repairs** | SFC, DISM, network reset, Windows Update repair, CHKDSK |
 
----
-
-## Download & install
-
-This repository **only ships the executable**. No installer, no dependencies — a single self-contained `.exe`.
-
-1. Go to [**Releases**](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest) and download **`SotheOptimizer.exe`**.
-2. *(Recommended)* Verify its integrity:
-
-   ```powershell
-   Get-FileHash .\SotheOptimizer.exe -Algorithm SHA256
-   ```
-
-   The result must match the `sha256` field in that release's `release.json`.
-3. Double-click to run it. Windows will ask for **administrator rights** (UAC) — accept.
-4. If SmartScreen shows up ("Windows protected your PC"): **More info → Run anyway**. The binary isn't Authenticode-signed yet (a code-signing certificate costs ~150–400 €/year); integrity is instead guaranteed by the signatures and hashes described below.
-5. Read and accept the legal notice, **create a restore point** from inside the app, and start from a profile.
-
-### Requirements
-
-- **Windows 10 or 11, 64-bit.**
-- **Administrator rights**: the app edits the registry (HKLM), services and system features. Without elevation Windows won't launch it; if you cancel the UAC prompt, the app simply doesn't open and nothing is touched.
-- **No .NET install needed**: the runtime is bundled in the `.exe` (hence the ~160 MB size).
-- Internet connection is **optional**: only used for licensing, updates and the winget catalog.
+> The UI is in **Spanish** and so are most code comments; the documentation is in English. Internationalising the UI
+> is on the roadmap.
 
 ---
 
-## Architecture
+## Engineering highlights
 
-Sothe Optimizer is a **WPF app on .NET 8**, published as a single-file, self-contained executable. The logic is split into engine, data and UI:
+### Reversibility that survives overlapping tweaks
 
-```
-┌─────────────────────────── UI (WPF) ──────────────────────────────┐
-│ Optimizations · Apps (winget) · Repairs · Windows Features         │
-└──────────────┬────────────────────────────────────┬────────────────┘
-               │ apply / revert                     │ license / update
-┌──────────────▼───────────────┐      ┌─────────────▼───────────────────────┐
-│ Engine (SotheEngine)         │      │ Licensing (Keygen) · AppUpdater      │
-│ registry · services · cmds   │      │ signed data OTA                      │
-│ backups · reconciliation     │      └───────────────────────────────────────┘
-└──────────────▲───────────────┘
-               │ reads (JSON embedded in the exe, or a signed update)
-        tweaks · apps · features · profiles
-```
+Each tweak stores the previous state of every operation **before** executing it, in an atomically written backup
+that carries a sequence number. Reverting is **LIFO**: the last tweak applied is the first one undone, and inside a
+tweak the last operation is undone first.
 
-### Reversibility and reconciliation
+Registry and service operations record the previous value automatically. Command tweaks (power plans, `bcdedit`,
+hibernation, scheduled tasks, MSI...) declare a read-only `capture` script whose output is stored in the backup and
+handed to `apply` and `revert` as `$captured`, so a revert puts back **what was there**, not a hard-coded default. If
+the capture fails, nothing is applied. `regsub` applies one value to every subkey (one per network interface) and
+remembers each one's previous value.
 
-- Every tweak is a list of **operations** (registry, service, command, Appx package) described in JSON — adding one never touches the code.
-- Before applying, the **previous state** is saved to `%ProgramData%\SotheOptimizer\backups`.
-- The main button **reconciles**: checked-but-not-applied gets applied; **unchecked-but-applied gets reverted**; already-applied is left alone. The system ends up exactly matching what's checked.
-- A revert that **fails keeps its backup** (the tweak still counts as applied and can be retried) and is logged to `sothe.log`.
-- There's a **dry-run simulation** to preview what would change without touching anything.
+Why that matters: two tweaks can write the same key (`defender_full_off` and `defender_realtime_off` both write
+`DisableRealtimeMonitoring`). The second tweak's "previous value" is whatever the first one left. Undoing them in
+alphabetical order re-applies the first tweak's value and leaves Defender's real-time protection **off after
+"Revert all"**. An earlier version of this project had exactly that bug; it is now covered by regression tests that
+run against a sandbox registry key (`RegistryRevertTests`).
 
-### Timer Resolution (native Windows API)
+- A crash mid-apply leaves a backup for every operation that ran, so the tweak is still revertible.
+- Disabling a service stops it; reverting restores its start type **and** starts it again if it was running.
+- Re-applying an already-applied tweak is a no-op (it would otherwise overwrite the original state with the modified one).
+- A restore point is created automatically before the first batch of a session (opt out with a checkbox). The
+  temporary `SystemRestorePointCreationFrequency = 0` needed to allow it is put back afterwards.
+- A revert that fails keeps its backup, so the tweak still counts as applied and can be retried.
 
-The "Fixed Timer Resolution" tweak asks the kernel for **0.5 ms** resolution via `NtSetTimerResolution` / `NtQueryTimerResolution` in `ntdll.dll` (P/Invoke). The platform timer is global: as long as *any* process holds the request, the whole system runs at that resolution. Because of that:
+### Verified on a real machine, not just in unit tests
 
-- A **scheduled task at logon** launches a lightweight resident process (`--timer-resident`, 0% CPU — it blocks on an event).
-- A **global mutex** prevents duplicate instances.
-- On exit (reverting the tweak, or logging off) the resident process **explicitly releases its request** (`NtSetTimerResolution(..., false)`) so resolution goes back to the system default and nothing drains extra battery. Revert signals a named event first and only force-kills as a last resort.
-- The task runs elevated, so the `.exe` it launches is **copied into `Program Files`** (a folder only an administrator can write to) — the task never points at your Downloads folder.
+`tools/RoundTripCheck` applies and reverts tweaks on the actual Windows it runs on and diffs a snapshot of the system
+(registry values, power plans and their values, services and their start type, scheduled tasks, hibernation,
+`bcdedit`, HPET, MSI) before and after. On a Windows 11 machine that was already heavily tuned:
 
-### Signed auto-update (`AppUpdater`)
+- **47 of 47** tweaks (all `safe` and `moderate` ones plus `hpet_off`, `bcd_timer` and `gpu_msi_mode`) restored the
+  exact previous state after apply -> revert.
+- Applying all 47 and then reverting newest-first ("Revert all") left **zero differences** from the starting state.
+- The resident timer process holds the calibrated resolution, refuses a second instance and releases it on stop.
 
-1. On startup it checks this repository's latest release (**HTTPS only**, GitHub hosts only).
-2. It downloads `release.json` + `release.sig` and verifies the **ECDSA P-256** signature against the app's **embedded public key**. The private key lives only on the author's machine.
-3. If the version is newer, it **streams** the `.exe` to disk, hashing it with **SHA-256** on the fly under a size cap; if the hash or size don't match what was signed, it's discarded and nothing is kept.
-4. It installs when nothing else is in progress (or on the next launch): a script **waits for the process to exit, backs up the current `.exe`, swaps it in, relaunches**, and **rolls back** if anything fails.
-5. No connection, GitHub down, or corrupt data: nothing happens. A failed update check is logged and the app keeps working.
+Running it the first time **found real bugs** that the unit tests could not: reverts restored hard-coded defaults, so a
+custom power plan was replaced, an existing "Ultimate Performance" plan deleted, hibernation turned back on and
+existing `TCPNoDelay` values removed. Those are fixed (see the commit history) and covered by tests.
 
-Even if GitHub or your network were compromised, **without the author's private key no binary the app would actually run can be slipped in**.
+Honest limits of that run: 36 of the 47 tweaks were already applied on that machine, so they showed no *change* (the
+restore check still holds); `firewall_off`, `hypervisor_off`, the Defender/UAC/VBS family, `reserved_storage_off` and
+the Appx debloat were **not** run live (the tool refuses security-weakening tweaks by default).
 
-### Licensing
+### Signed auto-update
 
-- Validated with **[Keygen](https://keygen.sh)**: node-locked licenses (one PC per key) and 3-month trials.
-- The **machine fingerprint** is a salted SHA-256 of the BIOS UUID and motherboard serial; never sent in the clear.
-- The license is cached **DPAPI-encrypted** and re-validated in the background. There's a **14-day offline grace period** and detection of clocks that are behind or carry impossible dates.
-- Free tweaks always work, and **reverting is always free**.
+`AppUpdater` checks the latest GitHub release (HTTPS only, GitHub hosts only), downloads `release.json` +
+`release.sig` and verifies the **ECDSA P-256** signature against the embedded public key. The `.exe` is streamed to
+disk with SHA-256 computed on the fly under a size cap, and only a file whose hash and size match the *signed*
+manifest is staged. Installing runs a script that waits for the process to exit, backs up the current binary, swaps
+and relaunches, and rolls back on failure. A standalone version of the same idea lives in
+[SignedUpdater](https://github.com/ImSothe/SignedUpdater).
 
-### Updatable data (OTA)
+### Hardened data folder
 
-The tweak JSON files can be updated without reinstalling, but since they contain commands run as administrator, **only a signed manifest is accepted** — signed with the author's key, with every file's SHA-256 checked. An unsigned, hand-edited, or older JSON is ignored in favor of the copy embedded in the `.exe`.
+`%ProgramData%\SotheOptimizer` holds backups whose `revert` field is later run as administrator, so it is treated as
+untrusted input: the folder must be owned by an administrator or the system, gets a protected ACL, and anything
+created by someone else is removed. System tools (`cmd`, `powershell`) are launched by absolute path.
 
----
+### Timer resolution, measured
 
-## Security
+`TimerResolution` talks to `ntdll` (`NtSetTimerResolution`) and releases its request explicitly. It also
+**calibrates**: asking for exactly 0.5 ms is not always what makes `Sleep(1)` most accurate. Measured on one
+Windows 11 machine (supported range 0.500-15.625 ms), 4 alternating rounds of 150 samples:
 
-Sothe Optimizer asks for administrator rights and runs commands, so it has been audited as such (manual static analysis plus 212 automated tests). Highlights:
-
-| Surface | Mitigation |
+| Requested | Mean `Sleep(1)` |
 |---|---|
-| **Updater** | HTTPS + host allow-list · ECDSA P-256 signature · signed SHA-256 and size · streamed download with a size cap · backup-and-rollback swap |
-| **Data folder** (`%ProgramData%\SotheOptimizer`) | Only trusts what an administrator or the system created; protected ACL (standard users get read-only); anything planted by someone else is removed |
-| **Process launching** | `cmd.exe`, `powershell.exe` and `winget` are launched by **absolute path**, so an executable dropped next to the `.exe` can't run as administrator |
-| **Commands** | winget / Windows Feature / service / Appx package names validated against strict patterns; `ProcessStartInfo.ArgumentList` instead of concatenated argument strings |
-| **OTA data** | Per-file signature and hash; only a closed list of filenames is ever accepted |
-| **Licensing** | DPAPI-encrypted cache, salted fingerprint, rejects a validation timestamp set in the future |
+| default timer | 15.58 ms |
+| 0.500 ms | 1.54 ms |
+| 0.515 ms | **1.16 ms** |
 
-**Privacy.** No telemetry. The only network calls are: GitHub (update checks), Keygen (licensing: your key, a hashed/salted fingerprint and machine name) and winget/Microsoft (the app catalog) when you use it.
-
-**Known limits.** A .NET program running on your own machine can never be fully protected from whoever runs it. This app is not a black box to someone willing to analyze it; the real protection for licensing lives server-side, in Keygen.
-
-Found a vulnerability? Please open a [private security advisory](https://github.com/ImSothe/Sothe-Windows-Optimizer/security/advisories/new) (see [SECURITY.md](SECURITY.md)) instead of a public issue.
+It costs a little more jitter (stddev ~0.22 ms vs ~0.16 ms) and it is hardware dependent, so the resident process
+measures a sweep at install time and holds the best value. A measured negative result is documented too: on Windows 11
+a resident process drops the *system* clock to 0.5 ms, but **other** processes' `Sleep(1)` stays at ~15.5 ms unless
+the `GlobalTimerResolutionRequests` registry opt-in is set (which the tweak does, and which may need a reboot). The
+standalone library is [WindowsTimerResolution](https://github.com/ImSothe/WindowsTimerResolution).
 
 ---
 
-## Uninstall & undo
+## Tests
 
-- Inside the app: **Revert ALL** restores every tweak from its backup.
-- To remove the app, just delete `SotheOptimizer.exe`. If you enabled *Fixed Timer Resolution*, **revert that tweak first** (it removes the scheduled task and its copy in `Program Files`).
-- Data lives in `%ProgramData%\SotheOptimizer` (backups, your own profiles, the log).
+```powershell
+dotnet test tests/SotheOptimizer.Tests -c Release
+```
 
----
+**172 tests**, ~2 s. Line coverage is **87.5 %** (788 / 901) and branch coverage 72.5 %, measured with `coverlet`
+over the engine, updaters, signing, storage hardening and timer code. The WPF windows (about 1.6k lines) are **not**
+covered, so that figure is not the coverage of the whole product. The registry round-trip tests only ever touch
+`HKCU\Software\TojiTests\<guid>`.
 
-## Source code
+## Build
 
-The full source, tests and documentation are in **[Toji-Windows-Optimizer](https://github.com/ImSothe/Toji-Windows-Optimizer)**. Questions or reports: open an issue there.
+```powershell
+dotnet build SotheOptimizer.sln -c Release
+dotnet publish src/SotheOptimizer -c Release     # single self-contained SotheOptimizer.exe, runtime included
+```
 
----
+Requires the .NET 8 SDK on Windows 10/11 x64. The app asks for administrator rights (UAC) because it edits HKLM,
+services and system features. `tools/OtaSigner` generates the signing key pair and signs releases and data files;
+the **private key is never in the repo**. See [src/SotheOptimizer/BUILD.md](https://github.com/ImSothe/Toji-Windows-Optimizer/blob/main/src/SotheOptimizer/BUILD.md) (Spanish).
 
-## License and ownership
+## Layout
 
-**Sothe Windows Optimizer is proprietary freeware (closed source).** It is free to download and use for personal purposes; the source code is not distributed.
+```
+src/SotheOptimizer/
+  SotheEngine.cs        apply / revert, LIFO backups, registry + services + commands
+  AppUpdater.cs         signed self-update          DataUpdater.cs   signed data (OTA, currently off)
+  SignedData.cs         ECDSA verification          SecureStorage.cs hardened %ProgramData%
+  TimerResolution.cs    ntdll timer + calibration   PowerShellRunner.cs  hidden PowerShell with real error detection
+  data/*.json           tweaks, apps, features, profiles (embedded in the exe)
+  MainWindow*.cs/xaml   WPF UI
+tests/SotheOptimizer.Tests/   xUnit
+tools/OtaSigner/              key generation and signing
+tools/RoundTripCheck/         real apply/revert check with before/after system snapshots
+```
 
-- **Owner and copyright holder:** Sothe ([@ImSothe](https://github.com/ImSothe)). Copyright © 2026 Sothe. All rights reserved.
-- **What you may do:** download, install and use `SotheOptimizer.exe` on computers you own or administer, and share the link to this repository. Some features require a separate PRO license.
-- **What you may not do:** modify, resell or redistribute the executable, present it as your own, or reverse engineer it (except where the law expressly allows it).
-- **Full terms:** see [LICENSE](LICENSE), in English with the Spanish original included.
+## Known limits
 
-GitHub shows the license as "Other" (or "NOASSERTION") because this is a custom, proprietary license rather than an open-source one such as MIT. That is intentional.
+- **Not every tweak is reversible.** Appx debloat cannot be reinstalled automatically (the app says so). A setting
+  that was never explicitly set in a power plan (for example `CPMINCORES` on some custom plans) has no value to put back,
+  so its revert is skipped. `reserved_storage_off` and the security-weakening tweaks have not been verified live.
+- **No measurements for most tweaks.** Several performance tweaks (for example `nagle_off`, `gaming_gpu_priority`,
+  `game_mode`) are community folklore with no measured effect on modern Windows; treat them as optional. On current
+  Windows, Defender tweaks are also ignored while Tamper Protection is on.
+- `HKCU` tweaks apply to the account that elevated the process, which is not the interactive user if a different
+  administrator's credentials were used at the UAC prompt.
+- The binary is not Authenticode-signed, so SmartScreen warns on first run. Update integrity does not depend on it.
+- The OTA data channel is implemented and tested but disabled (no base URL configured).
 
-## Legal notice
+Reproducible findings from the security review that preceded open-sourcing live in the commit history
+(`Revert in LIFO order, back up before each operation...`).
 
-Sothe Optimizer modifies deep Windows settings. **Use it at your own risk**: some tweaks disable security protections or can cause instability. Always create a restore point before applying changes. The software is provided "AS IS", with no warranty. See [LICENSE](LICENSE).
+## Disclaimer
 
-## Source code & engineering notes
+Toji modifies deep Windows settings. **Use it at your own risk**: some tweaks disable security protections or can
+cause instability. A restore point is created automatically; keep it enabled. Provided "AS IS", without warranty.
 
-The source code is **not distributed** in this repository; only signed binary releases are published here (see [LICENSE](LICENSE)). For anyone evaluating the engineering rather than running the app:
+## License
 
-- WPF / .NET 8, single-file self-contained publish.
-- `ntdll` P/Invoke for 0.5 ms timer resolution, with an explicit release on exit instead of relying on process teardown.
-- ECDSA P-256 **signed auto-updater**: HTTPS + host allow-list, streamed SHA-256 verification, a declared-size cap, and a backup-and-rollback swap script.
-- **Keygen** node-locked licensing with a DPAPI-protected cache and a salted hardware fingerprint.
-- Signed OTA data updates, hardened `%ProgramData%` storage (ownership + ACL checks), absolute-path process launching.
-- The public build is **obfuscated** (Obfuscar) before packaging.
-- **212 automated tests** (xUnit) covering the engine, the updater, licensing and the security hardening above.
+[MIT](https://github.com/ImSothe/Toji-Windows-Optimizer/blob/main/LICENSE)
+
+Built with AI-assisted development (Claude Code); the design, the decisions and the verification are mine. Contact:
+[LinkedIn](https://www.linkedin.com/in/%C3%A1ngel-baz-monteiro-8196a21a9/)
