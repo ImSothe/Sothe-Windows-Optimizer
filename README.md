@@ -70,8 +70,7 @@ Signed binary releases are published in
 [**Sothe-Windows-Optimizer › Releases**](https://github.com/ImSothe/Sothe-Windows-Optimizer/releases/latest), the
 repository existing installs poll for updates. A single self-contained `.exe`: no installer, no dependencies.
 
-> **Release status.** `v1.1.0` is the previous closed-source build (it still had a licensing layer). `v1.2.0`, the first
-> open-source build, is being signed and published. You can always build the current code yourself, see below.
+> **Release status.** `v1.2.0` is the first open-source build (MIT, no licensing). The update-signing key was replaced, so installs of `v1.1.0` or older (the closed-source builds) will not auto-update: download `v1.2.0` once by hand; from there auto-update works again.
 
 1. Download **`SotheOptimizer.exe`** (the file keeps its original name so existing installs update in place).
 2. *(Recommended)* verify it: `Get-FileHash .\SotheOptimizer.exe -Algorithm SHA256` must match the `sha256` field of
