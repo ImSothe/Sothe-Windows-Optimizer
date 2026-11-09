@@ -1,3 +1,7 @@
+> **This repository is archived.** The project continues as **Toji**, with new tweaks, signed releases and the current
+> source: **[ImSothe/Toji-Windows-Optimizer](https://github.com/ImSothe/Toji-Windows-Optimizer)**. Please download and
+> report issues there. Old releases (v1.1.0 to v1.3.0) stay downloadable here for reference; v1.4.0 and later are published only in the Toji repository.
+
 <div align="center">
 
 # Toji
